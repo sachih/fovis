@@ -4,8 +4,6 @@ if(USE_SSE)
     add_definitions(-msse2 -msse3)
 endif()
 
-#add_definitions(-Wall -march=native -msse2 -msse3 -msse4.2 -g)
-
 add_library(fovis SHARED
     frame.cpp
     visual_odometry.cpp

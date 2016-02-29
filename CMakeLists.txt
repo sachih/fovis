@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.6.0)
 # pull in the pods macros. See cmake/pods.cmake for documentation
 set(POD_NAME libfovis)
 include(cmake/pods.cmake)
-
+include(cmake/sse.cmake)
 # Try to use pkg-config to find Eigen3.  If we don't have pkg-config, then
 # just assume that Eigen3 is in the include path.
 find_package(PkgConfig)
@@ -12,13 +12,21 @@ if(PKG_CONFIG_FOUND)
 endif()
 
 # Do we want to use SSE?
-option(USE_SSE "Enables SSE support" ON)
-if(USE_SSE)
-    set(USE_SSE_MESSAGE "Enabled")
-    add_definitions(-DFOVIS_USE_SSE)
+if (SSE3_FOUND)
+  set(USE_SSE)
+  set(USE_SSE_MESSAGE "Enabled")
+  add_definitions(-DFOVIS_USE_SSE)
 else()
-    set(USE_SSE_MESSAGE "Disabled")
+  message(STATUS, "Compiling without SSE")
+  set(USE_SSE_MESSAGE "Disabled")
 endif()
+# option(USE_SSE "Enables SSE support" ON)
+# if(USE_SSE)
+#     set(USE_SSE_MESSAGE "Enabled")
+#     add_definitions(-DFOVIS_USE_SSE)
+# else()
+#     set(USE_SSE_MESSAGE "Disabled")
+# endif()
 
 # build the main library
 add_subdirectory(libfovis)

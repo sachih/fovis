@@ -2,9 +2,9 @@
 
 #include <cstdio>
 #include <iostream>
-
+#ifdef FOVIS_USE_SSE
 #include <emmintrin.h>
-
+#endif
 #include "visual_odometry.hpp"
 #include "tictoc.hpp"
 #include "fast.hpp"

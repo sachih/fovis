@@ -5,8 +5,9 @@
 
 #include <Eigen/Core>
 #include <Eigen/Geometry>
+#ifdef FOVIS_USE_SSE
 #include <emmintrin.h>
-
+#endif
 #include "options.hpp"
 
 namespace fovis
