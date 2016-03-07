@@ -33,6 +33,7 @@ add_subdirectory(libfovis)
 
 add_subdirectory(testers)
 add_subdirectory(examples)
+add_subdirectory(fovis-lcm)
 
 message("
 
